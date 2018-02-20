@@ -1,48 +1,45 @@
 module.exports = function solveEquation(equation) {
   var arr=equation.split(' ');
+  var a=0, b=0, c=0;
   if (arr[0]=='-' && arr[4]=='+' && arr[8]=='+') {
-    var a=+arr[1]*(-1);
-    var b=+arr[5];
-    var c=+arr[9];
+    a=+arr[1]*(-1);
+    b=+arr[5];
+    c=+arr[9];
   } else if (arr[0]=='-' && arr[4]=='-' && arr[8]=='+') {
-    var a=+arr[1]*(-1);
-    var b=+arr[5]*(-1);
-    var c=+arr[9];
+    a=+arr[1]*(-1);
+    b=+arr[5]*(-1);
+    c=+arr[9];
   } else if (arr[0]=='-' && arr[4]=='-' && arr[8]=='-') {
-    var a=+arr[1]*(-1);
-    var b=+arr[5]*(-1);
-    var c=+arr[9]*(-1);
+    a=+arr[1]*(-1);
+    b=+arr[5]*(-1);
+    c=+arr[9]*(-1);
   } else if (arr[0]=='-' && arr[4]=='+' && arr[8]=='-') {
-    var a=+arr[1]*(-1);
-    var b=+arr[5];
-    var c=+arr[9]*(-1);
+    a=+arr[1]*(-1);
+    b=+arr[5];
+    c=+arr[9]*(-1);
   } else if (typeof(+arr[0])=='number' && arr[3]=='+' && arr[7]=='-') {
-    var a=+arr[0];
-    var b=+arr[4];
-    var c=+arr[8]*(-1);
+    a=+arr[0];
+    b=+arr[4];
+    c=+arr[8]*(-1);
   } else if (typeof(+arr[0])=='number' && arr[3]=='-' && arr[7]=='+') {
-    var a=+arr[0];
-    var b=+arr[4]*(-1);
-    var c=+arr[8];
+    a=+arr[0];
+    b=+arr[4]*(-1);
+    c=+arr[8];
   } else if (typeof(+arr[0])=='number' && arr[3]=='-' && arr[7]=='-') {
-    var a=+arr[0];
-    var b=+arr[4]*(-1);
-    var c=+arr[8]*(-1);
+    a=+arr[0];
+    b=+arr[4]*(-1);
+    c=+arr[8]*(-1);
   } else if (typeof(+arr[0])=='number' && arr[3]=='+' && arr[7]=='+') {
-    var a=+arr[0];
-    var b=+arr[4];
-    var c=+arr[8];
+    a=+arr[0];
+    b=+arr[4];
+    c=+arr[8];
   }
+
   var d=b*b-4*a*c;
-  var x1=0;
-  var x2=0;
-  if (d>0) {
-    var D=Math.sqrt(d);
-    x1=Math.round((-b+D)/(2*a));
-    x2=Math.round((-b-D)/(2*a));
-  } else if (d==0) {
-    x1=Math.round((-1)*b/(2*a));
-    x2=Math.round((-1)*b/(2*a));
-  }
-  return [x1, x2];
+  var D=Math.sqrt(d);
+  var x1=Math.round((-b+D)/(2*a));
+  var x2=Math.round((-b-D)/(2*a));
+
+  if (a<0) {return [x1,x2];
+  } else {return [x2,x1];}
 }
